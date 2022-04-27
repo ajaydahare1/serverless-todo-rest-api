@@ -4,7 +4,7 @@ frameworkVersion: "3"
 provider:
   name: aws
   runtime: nodejs12.x
-  region: ap-south-1
+  region: us-east-1
   iamRoleStatements:
     - Effect: Allow
       Action:
@@ -15,7 +15,7 @@ provider:
         - dynamodb:PutItem
         - dynamodb:UpdateItem
         - dynamodb:DeleteItem
-      Resource: arn:aws:dynamodb:ap-south-1:*:*
+      Resource: arn:aws:dynamodb:us-east-1:*:*
 resources:
   Resources:
     TodoTable:
@@ -31,7 +31,7 @@ resources:
         ProvisionedThroughput:
           ReadCapacityUnits: 1
           WriteCapacityUnits: 1
-        TableName: ${ssm:/lambda_rest_api/dynamodb_table}
+        TableName: "todos"
 
 functions:
   getAllTodo:
